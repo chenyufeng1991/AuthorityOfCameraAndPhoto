@@ -10,7 +10,6 @@
 
 @interface DeniedAuthViewController : UIViewController
 
-
 @property (weak, nonatomic) IBOutlet UIButton *backBtn;
 
 @end
