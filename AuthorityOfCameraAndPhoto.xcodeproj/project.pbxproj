@@ -12,6 +12,10 @@
 		711A41601D17B931009F2B56 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 711A415F1D17B931009F2B56 /* MainViewController.m */; };
 		711A41651D17B931009F2B56 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 711A41641D17B931009F2B56 /* Assets.xcassets */; };
 		711A41681D17B931009F2B56 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 711A41661D17B931009F2B56 /* LaunchScreen.storyboard */; };
+		711A41711D17C7D6009F2B56 /* YFKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 711A41701D17C7D6009F2B56 /* YFKit.m */; };
+		711A41751D17D497009F2B56 /* DeniedAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 711A41731D17D497009F2B56 /* DeniedAuthViewController.m */; };
+		711A41761D17D497009F2B56 /* DeniedAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 711A41741D17D497009F2B56 /* DeniedAuthViewController.xib */; };
+		F5DA2A2DB0E13963DC79F94C /* libPods-AuthorityOfCameraAndPhoto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CE09C4A4276E7A140ABAEA0C /* libPods-AuthorityOfCameraAndPhoto.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,14 @@
 		711A41641D17B931009F2B56 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		711A41671D17B931009F2B56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		711A41691D17B931009F2B56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		711A416F1D17C7D6009F2B56 /* YFKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YFKit.h; sourceTree = "<group>"; };
+		711A41701D17C7D6009F2B56 /* YFKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YFKit.m; sourceTree = "<group>"; };
+		711A41721D17D497009F2B56 /* DeniedAuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeniedAuthViewController.h; sourceTree = "<group>"; };
+		711A41731D17D497009F2B56 /* DeniedAuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeniedAuthViewController.m; sourceTree = "<group>"; };
+		711A41741D17D497009F2B56 /* DeniedAuthViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DeniedAuthViewController.xib; sourceTree = "<group>"; };
+		A849189F57189D59B68B58DF /* Pods-AuthorityOfCameraAndPhoto.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AuthorityOfCameraAndPhoto.release.xcconfig"; path = "Pods/Target Support Files/Pods-AuthorityOfCameraAndPhoto/Pods-AuthorityOfCameraAndPhoto.release.xcconfig"; sourceTree = "<group>"; };
+		BAF54B3EC0C15CFC76A4FDB8 /* Pods-AuthorityOfCameraAndPhoto.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AuthorityOfCameraAndPhoto.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AuthorityOfCameraAndPhoto/Pods-AuthorityOfCameraAndPhoto.debug.xcconfig"; sourceTree = "<group>"; };
+		CE09C4A4276E7A140ABAEA0C /* libPods-AuthorityOfCameraAndPhoto.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AuthorityOfCameraAndPhoto.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +43,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5DA2A2DB0E13963DC79F94C /* libPods-AuthorityOfCameraAndPhoto.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E5CD36DC0B7AD0849698F04 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BAF54B3EC0C15CFC76A4FDB8 /* Pods-AuthorityOfCameraAndPhoto.debug.xcconfig */,
+				A849189F57189D59B68B58DF /* Pods-AuthorityOfCameraAndPhoto.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		711A414C1D17B931009F2B56 = {
 			isa = PBXGroup;
 			children = (
 				711A41571D17B931009F2B56 /* AuthorityOfCameraAndPhoto */,
 				711A41561D17B931009F2B56 /* Products */,
+				0E5CD36DC0B7AD0849698F04 /* Pods */,
+				F9C66A05D792078876DB2D61 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -60,6 +84,11 @@
 				711A415C1D17B931009F2B56 /* AppDelegate.m */,
 				711A415E1D17B931009F2B56 /* MainViewController.h */,
 				711A415F1D17B931009F2B56 /* MainViewController.m */,
+				711A41721D17D497009F2B56 /* DeniedAuthViewController.h */,
+				711A41731D17D497009F2B56 /* DeniedAuthViewController.m */,
+				711A41741D17D497009F2B56 /* DeniedAuthViewController.xib */,
+				711A416F1D17C7D6009F2B56 /* YFKit.h */,
+				711A41701D17C7D6009F2B56 /* YFKit.m */,
 				711A41641D17B931009F2B56 /* Assets.xcassets */,
 				711A41661D17B931009F2B56 /* LaunchScreen.storyboard */,
 				711A41691D17B931009F2B56 /* Info.plist */,
@@ -76,6 +105,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		F9C66A05D792078876DB2D61 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CE09C4A4276E7A140ABAEA0C /* libPods-AuthorityOfCameraAndPhoto.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -83,9 +120,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 711A416C1D17B931009F2B56 /* Build configuration list for PBXNativeTarget "AuthorityOfCameraAndPhoto" */;
 			buildPhases = (
+				B028D392FAC40BC190A4D7AC /* [CP] Check Pods Manifest.lock */,
 				711A41511D17B931009F2B56 /* Sources */,
 				711A41521D17B931009F2B56 /* Frameworks */,
 				711A41531D17B931009F2B56 /* Resources */,
+				945F2079C2C51D01E20D48D1 /* [CP] Embed Pods Frameworks */,
+				6DBCC0DF834320CAC63B0171 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -133,6 +173,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				711A41761D17D497009F2B56 /* DeniedAuthViewController.xib in Resources */,
 				711A41681D17B931009F2B56 /* LaunchScreen.storyboard in Resources */,
 				711A41651D17B931009F2B56 /* Assets.xcassets in Resources */,
 			);
@@ -140,12 +181,62 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		6DBCC0DF834320CAC63B0171 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AuthorityOfCameraAndPhoto/Pods-AuthorityOfCameraAndPhoto-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		945F2079C2C51D01E20D48D1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AuthorityOfCameraAndPhoto/Pods-AuthorityOfCameraAndPhoto-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B028D392FAC40BC190A4D7AC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		711A41511D17B931009F2B56 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				711A41751D17D497009F2B56 /* DeniedAuthViewController.m in Sources */,
 				711A41601D17B931009F2B56 /* MainViewController.m in Sources */,
+				711A41711D17C7D6009F2B56 /* YFKit.m in Sources */,
 				711A415D1D17B931009F2B56 /* AppDelegate.m in Sources */,
 				711A415A1D17B931009F2B56 /* main.m in Sources */,
 			);
@@ -249,6 +340,7 @@
 		};
 		711A416D1D17B931009F2B56 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BAF54B3EC0C15CFC76A4FDB8 /* Pods-AuthorityOfCameraAndPhoto.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = AuthorityOfCameraAndPhoto/Info.plist;
@@ -260,6 +352,7 @@
 		};
 		711A416E1D17B931009F2B56 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A849189F57189D59B68B58DF /* Pods-AuthorityOfCameraAndPhoto.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = AuthorityOfCameraAndPhoto/Info.plist;
@@ -288,6 +381,7 @@
 				711A416E1D17B931009F2B56 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
