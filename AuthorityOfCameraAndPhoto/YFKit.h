@@ -13,4 +13,7 @@
 + (BOOL)isCameraDenied;
 + (BOOL)isCameraNotDetermined;
 
++ (BOOL)isPhotoAlbumDenied;
++ (BOOL)isPhotoAlbumNotDetermined;
+
 @end

@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "YFKit.h"
 @import AVFoundation;
+@import AssetsLibrary;
 
 typedef void(^YFUIAlertControllerBlock)(UIAlertController *dialog,NSInteger buttonIndx);
 
@@ -28,6 +29,26 @@ typedef void(^YFUIAlertControllerBlock)(UIAlertController *dialog,NSInteger butt
 {
     AVAuthorizationStatus author = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
     if (author == AVAuthorizationStatusNotDetermined)
+    {
+        return YES;
+    }
+    return NO;
+}
+
++ (BOOL)isPhotoAlbumDenied
+{
+    ALAuthorizationStatus author = [ALAssetsLibrary authorizationStatus];
+    if (author == ALAuthorizationStatusRestricted || author == ALAuthorizationStatusDenied)
+    {
+        return YES;
+    }
+    return NO;
+}
+
++ (BOOL)isPhotoAlbumNotDetermined
+{
+    ALAuthorizationStatus author = [ALAssetsLibrary authorizationStatus];
+    if (author == ALAuthorizationStatusNotDetermined)
     {
         return YES;
     }

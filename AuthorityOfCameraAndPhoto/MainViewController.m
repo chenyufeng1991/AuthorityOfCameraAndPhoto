@@ -11,6 +11,7 @@
 #import "YFKit.h"
 #import "DeniedAuthViewController.h"
 @import AVFoundation;
+@import Photos;
 
 @interface MainViewController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
@@ -40,7 +41,7 @@
     }];
 
     UIButton *photoBtn = [UIButton buttonWithType:UIButtonTypeSystem];
-    [photoBtn setTitle:@"原始的照片授权" forState:UIControlStateNormal];
+    [photoBtn setTitle:@"原始的相册授权" forState:UIControlStateNormal];
     [photoBtn addTarget:self action:@selector(photoBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:photoBtn];
     [photoBtn mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -50,18 +51,27 @@
         make.height.equalTo(@30);
     }];
 
-    UIButton *optimalcameraBtn = [UIButton buttonWithType:UIButtonTypeSystem];
-    [optimalcameraBtn setTitle:@"优化的摄像头授权" forState:UIControlStateNormal];
-    [optimalcameraBtn addTarget:self action:@selector(optimalCameraBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:optimalcameraBtn];
-    [optimalcameraBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+    UIButton *optimalCameraBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+    [optimalCameraBtn setTitle:@"优化的摄像头授权" forState:UIControlStateNormal];
+    [optimalCameraBtn addTarget:self action:@selector(optimalCameraBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:optimalCameraBtn];
+    [optimalCameraBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(photoBtn).offset(50);
         make.left.equalTo(self.view);
         make.right.equalTo(self.view);
         make.height.equalTo(@30);
     }];
 
-
+    UIButton *optimalPhotoBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+    [optimalPhotoBtn setTitle:@"优化的相册授权" forState:UIControlStateNormal];
+    [optimalPhotoBtn addTarget:self action:@selector(optimalPhotoBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:optimalPhotoBtn];
+    [optimalPhotoBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(optimalCameraBtn).offset(50);
+        make.left.equalTo(self.view);
+        make.right.equalTo(self.view);
+        make.height.equalTo(@30);
+    }];
 }
 
 - (void)cameraBtnPressed:(id)sender
@@ -122,9 +132,50 @@
     }
     else
     {
-        NSLog(@"当前设备不支持拍照");
+        [self showAlertController:@"提示" message:@"当前设备不支持拍照"];
     }
+}
 
+- (void)optimalPhotoBtnPressed:(id)sender
+{
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary])
+    {
+        if ([YFKit isPhotoAlbumNotDetermined])
+        {
+            if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
+            {
+                [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        if (status == PHAuthorizationStatusRestricted || status == PHAuthorizationStatusDenied)
+                        {
+                            DeniedAuthViewController *vc = [[DeniedAuthViewController alloc] init];
+                            [self presentViewController:vc animated:YES completion:nil];
+                        }
+                        else if (status == PHAuthorizationStatusAuthorized)
+                        {
+                            [self presentToImagePickerController:UIImagePickerControllerSourceTypePhotoLibrary];
+                        }
+                    });
+                }];
+            }
+            else
+            {
+                [self presentToImagePickerController:UIImagePickerControllerSourceTypePhotoLibrary];
+            }
+        }
+        else if ([YFKit isPhotoAlbumDenied])
+        {
+            [self showAlertController:@"提示" message:@"拒绝访问相册，可去设置隐私里开启"];
+        }
+        else
+        {
+            [self presentToImagePickerController:UIImagePickerControllerSourceTypePhotoLibrary];
+        }
+    }
+    else
+    {
+        [self showAlertController:@"提示" message:@"当前设备不支持相册"];
+    }
 }
 
 - (void)presentToImagePickerController:(UIImagePickerControllerSourceType)type
