@@ -83,7 +83,7 @@
     }
     else
     {
-        NSLog(@"当前设备不支持拍照");
+        [self showAlertController:@"提示" message:@"当前设备不支持拍照"];
     }
 }
 
@@ -96,7 +96,7 @@
     }
     else
     {
-        NSLog(@"当前设备不支持相册");
+        [self showAlertController:@"提示" message:@"当前设备不支持相册"];
     }
 }
 
