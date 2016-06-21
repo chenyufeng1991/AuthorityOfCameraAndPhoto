@@ -104,27 +104,32 @@
 {
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
     {
+        // 应用第一次申请权限调用这里
         if ([YFKit isCameraNotDetermined])
         {
             [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     if (granted)
                     {
+                        // 用户授权
                         [self presentToImagePickerController:UIImagePickerControllerSourceTypeCamera];
                     }
                     else
                     {
-                        // 跳转到空态
+                        // 用户拒绝授权
                         DeniedAuthViewController *vc = [[DeniedAuthViewController alloc] init];
                         [self presentViewController:vc animated:YES completion:nil];
                     }
                 });
             }];
         }
+        // 用户已经拒绝访问摄像头
         else if ([YFKit isCameraDenied])
         {
             [self showAlertController:@"提示" message:@"拒绝访问摄像头，可去设置隐私里开启"];
         }
+
+        // 用户允许访问摄像头
         else
         {
             [self presentToImagePickerController:UIImagePickerControllerSourceTypeCamera];
@@ -132,6 +137,7 @@
     }
     else
     {
+        // 当前设备不支持摄像头，比如模拟器
         [self showAlertController:@"提示" message:@"当前设备不支持拍照"];
     }
 }
